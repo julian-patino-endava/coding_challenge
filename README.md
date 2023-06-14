@@ -7,7 +7,7 @@
 
 - `python auth_server.py`
 
-3-The server will be available at http://127.0.0.1:5000/token
+3-The server will be available at `http://127.0.0.1:5000/token`
 
 ## Docker Local Test
 
@@ -17,7 +17,7 @@
 
 - `docker build -t auth_server:tag .`
 
-3-The server will be available at http://127.0.0.1:5000/token
+3-The server will be available at `http://127.0.0.1:5000/token`
 
 4-To build the docker images and push it to a private registry
 
@@ -40,6 +40,6 @@
 
 - `kubectl get service server-service`
 
-6.1-If you are running k8s locally, you can access the server using http://localhost:<NodePort>, replacing <NodePort> with the assigned NodePort.
+6.1-If you are running k8s locally, you can access the server using `http://localhost:<NodePort>`, replacing `<NodePort>` with the assigned NodePort.
 
 6.2-If you are using a remote Kubernetes cluster, use the appropriate IP address or hostname of the cluster's node along with the assigned NodePort to access the server.
