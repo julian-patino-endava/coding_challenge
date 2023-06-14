@@ -5,7 +5,7 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # Copy the server script into the container
-COPY server.py .
+COPY auth_server.py .
 
 # Install the required dependencies
 RUN pip install flask
@@ -14,4 +14,4 @@ RUN pip install flask
 EXPOSE 5000
 
 # Set the command to run the server
-CMD ["python", "server.py"]
+CMD ["python", "auth_server.py"]
