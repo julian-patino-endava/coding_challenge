@@ -1,24 +1,29 @@
 from flask import Flask, request
-from functools import wraps
+from base64 import b64encode
+import json
 
 app = Flask(__name__)
 
-# Decorator for basic authentication
-def basic_auth_required(username, password):
-    def decorator(f):
-        @wraps(f)
-        def decorated(*args, **kwargs):
-            auth = request.authorization
-            if not auth or auth.username != username or auth.password != password:
-                return 'Unauthorized', 401
-            return f(*args, **kwargs)
-        return decorated
-    return decorator
+CLIENT_ID = "your_client_id"
+CLIENT_SECRET = "your_client_secret"
 
-@app.route('/token')
-@basic_auth_required('admin', 'password')  # Change username and password as needed
-def token_endpoint():
-    return 'Authenticated and authorized'
+@app.route('/token', methods=['POST'])
+def get_token():
+    auth_header = request.headers.get('Authorization')
+    if auth_header:
+        auth_type, auth_token = auth_header.split(' ', 1)
+        if auth_type.lower() == 'basic':
+            client_id_secret = b64encode((CLIENT_ID + ':' + CLIENT_SECRET).encode()).decode()
+            if auth_token == client_id_secret:
+                # Perform token generation logic here
+                token = generate_token()
+                return json.dumps({'access_token': token}), 200
+
+    return 'Unauthorized', 401
+
+def generate_token():
+    # Your token generation logic here
+    return 'your_access_token'
 
 if __name__ == '__main__':
     app.run()
