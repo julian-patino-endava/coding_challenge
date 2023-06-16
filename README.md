@@ -40,6 +40,6 @@
 
 - `kubectl get service server-service`
 
-6.1-If you are running k8s locally, you can access the server using `http://localhost:<NodePort>`, replacing `<NodePort>` with the assigned NodePort.
+6.1-If you are running k8s locally, you can access the server using `http://localhost:<NodePort>/token`, replacing `<NodePort>` with the assigned NodePort.
 
-6.2-If you are using a remote Kubernetes cluster, use the appropriate IP address or hostname of the cluster's node along with the assigned NodePort to access the server.
+6.2-If you are using a remote Kubernetes cluster, use the appropriate IP address or hostname of the cluster's node along with the assigned NodePort to access the server using the `/token` Endpoint.

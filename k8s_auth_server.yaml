@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: server
-          image: auth_server:latest
+          image: julianpatinoendava/auth_server:tagname
+          #imagePullPolicy: Never
           ports:
             - containerPort: 5000
 
